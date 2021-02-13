@@ -9,6 +9,7 @@ headers = {
         "X-Cisco-Meraki-API-Key": meraki_api_key,
     }
 org_list =[]
+organization =""
 # Creates URI for making API call, 
 # queries API and processes as json
 # Finally prints list of organizations
@@ -31,7 +32,9 @@ def list_orgs():
 def org_choose():
 	print("Which organization would you like to access? ")
 	choice = int(input())
+	organization = org_list[choice-1]["id"]
 	print("\nAccessing the {org_name} organization.".format(org_name =org_list[choice-1]["name"]))
+	print(organization)
 
 		
 
