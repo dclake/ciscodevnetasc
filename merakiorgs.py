@@ -23,18 +23,23 @@ def list_orgs():
 	
 	for item in json_responce:
 		org_list.append(item)
-		print(org_list)
+		#print(org_list)
 		print(str(n)+".", "ID:", item["id"],"Name:", item["name"])
 		n=+1
 		print()
 
-		
+def org_choose():
+	print("Which organization would you like to access? ")
+	choice = int(input())
+	print("\nAccessing the {org_name} organization.".format(org_name =org_list[choice-1]["name"]))
+
 		
 
 	
 if __name__ == "__main__":
 	list_orgs()
-	print("Which organization would you like to access? ")
-	org_choice = int(input())
-	print("Accessing the {org_name} organization.".format(org_name =org_list[org_choice-1]["name"]))
+	org_choose()
+	#print("Which organization would you like to access? ")
+	#org_choice = int(input())
+	#print("Accessing the {org_name} organization.".format(org_name =org_list[org_choice-1]["name"]))
 	#(org_name =org_list[org_choice-1]["name"])
