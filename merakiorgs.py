@@ -2,7 +2,8 @@ import requests
 import json
 from pprint import pprint
 
-meraki_api_key = "8f90ecec4fca692f606092279f203c6020ca011c"
+#meraki_api_key = "8f90ecec4fca692f606092279f203c6020ca011c"
+meraki_api_key = "6bec40cf957de430a6f1f2baa056b99a4fac9ea0"
 base_url =  "https://api.meraki.com/api/v0/"
 headers = {
         "X-Cisco-Meraki-API-Key": meraki_api_key,
@@ -24,7 +25,7 @@ def list_orgs():
 	n = 0
 	for item in json_responce:
 		orgs.append(item)
-		print("\n", str(n)+".", "ID:", item["id"],"Name:", item["name"],"\n")
+		print("\n", str(n)+".", "ID:", item["id"],"Name:", item["name"])
 		n +=1
 
 def choose_org():
@@ -50,9 +51,8 @@ def list_networks(org_choice):
 	n = 0
 	for item in json_responce:
 		orgs.append(item["id"])
-		print("\n", n, "ID:", item["id"],"Name:", item["name"], "Time Zone:", item["timeZone"])
-		print("Products:",item["productTypes"])
-		print()
+		print(str(n)+". ", "ID:", item["id"],"Name:", item["name"], "Time Zone:", item["timeZone"])
+		print("    Products:",item["productTypes"])
 		n +=1
 
 	
