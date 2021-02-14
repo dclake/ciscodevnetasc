@@ -1,4 +1,3 @@
-
 import requests
 import json
 from pprint import pprint
@@ -22,50 +21,20 @@ def list_orgs():
 	url = base_url+path 
 	response = requests.request('GET', url=url, headers=headers)
 	json_responce = json.loads(response.text)
-<<<<<<< HEAD
-	n=1
-	
-	for item in json_responce:
-		org_list.append(item)
-		#print(org_list)
-		print(str(n)+".", "ID:", item["id"],"Name:", item["name"])
-		n=+1
-=======
 	n = 0
 	for item in json_responce:
 		orgs.append(item)
-		print("\n", n, "ID:", item["id"],"Name:", item["name"])
->>>>>>> 2bcd9d213851c6267146f9cf4274ed2b0553a4b2
-		print()
+		print("\n", str(n)+".", "ID:", item["id"],"Name:", item["name"],"\n")
 		n +=1
 
-<<<<<<< HEAD
-def org_choose():
-	print("Which organization would you like to access? ")
-	choice = int(input())
-	organization = org_list[choice-1]["id"]
-	print("\nAccessing the {org_name} organization.".format(org_name =org_list[choice-1]["name"]))
-	print(organization)
-
-		
-
-	
-if __name__ == "__main__":
-	list_orgs()
-	org_choose()
-	#print("Which organization would you like to access? ")
-	#org_choice = int(input())
-	#print("Accessing the {org_name} organization.".format(org_name =org_list[org_choice-1]["name"]))
-	#(org_name =org_list[org_choice-1]["name"])
-=======
 def choose_org():
-	print("Choose an organization: ")
+	print("Which organization would you like to access?\n")
 	org_num = int(input())
 	if org_num <= len(orgs)-1:
 		org_choice = orgs[org_num]
 		org_id = org_choice["id"]
 		print()
-		print("You chose the {name} organization.".format(name=org_choice["name"]))
+		print("Accessing the {name} organization.".format(name=org_choice["name"]))
 		list_networks(org_id)
 	else:
 		print("Invalid entry!!")
@@ -93,4 +62,11 @@ choose_org()
 print(org_id)
 #print(orgs)
 #print(list_networks(orgs))
->>>>>>> 2bcd9d213851c6267146f9cf4274ed2b0553a4b2
+
+#if __name__ == "__main__":
+#	list_orgs()
+#	org_choose()
+	#print("Which organization would you like to access? ")
+	#org_choice = int(input())
+	#print("Accessing the {org_name} organization.".format(org_name =org_list[org_choice-1]["name"]))
+	#(org_name =org_list[org_choice-1]["name"])
