@@ -10,12 +10,14 @@ headers = {
     }
 org_list =[]
 organization =""
-# Creates URI for making API call, 
-# queries API and processes as json
-# Finally prints list of organizations
-orgs = []
+orgs = [] # A list containing organisations as JSON
+nets = []
 org_choice = ""
 org_id =""
+net_id = "" #Variable holding choice of network id to make subsequent API calls.
+
+# Creates URI for making API call, queries API and processes as json and  prints list of organizations
+
 def list_orgs():
 	print("\n","="*8, "Organization List", "="*8)
 	path = "organizations"
@@ -50,12 +52,23 @@ def list_networks(org_choice):
 	json_responce = json.loads(response.text)
 	n = 0
 	for item in json_responce:
-		orgs.append(item["id"])
+		nets.append(item["id"])
 		print(str(n)+". ", "ID:", item["id"],"Name:", item["name"], "Time Zone:", item["timeZone"])
 		print("    Products:",item["productTypes"])
 		n +=1
 
-	
+def choose_net():
+	print("hello")
+	print("Which network would you like to access?\n")
+	net_num = int(input())
+	if net_num <= len(nets)-1:
+		net_choice = nets[org_num]
+		net_id = net_choice["id"]
+		print()
+		print("Accessing the {name} organization.".format(name=org_choice["name"]))
+		list_networks(org_id)
+	else:
+		print("Invalid entry!!")	
 
 list_orgs()
 choose_org()
